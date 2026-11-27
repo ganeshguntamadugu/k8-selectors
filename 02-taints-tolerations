@@ -8,6 +8,6 @@ spec:
      image: nginx:stable-alpine3.24-perl
   tolerations:
     - key: project
-      operator: equal
+      operator: Equal
       value: expense
       effect: NoSchedule
