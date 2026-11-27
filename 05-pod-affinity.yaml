@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: cache
-  label:
+  labels:
     pupose: pod-affinity
 spec:
   containers:
