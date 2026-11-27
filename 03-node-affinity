@@ -8,13 +8,21 @@ spec:
      image: nginx:stable-alpine3.24-perl
   affinity:
     nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
+      requiredDuringSchedulingIgnoredDuringExecution: # Hard rule
         nodeSelectorTerms:
         - matchExpressions:
           - key: environment
             operator: In
             values:
             - prod   
+  preferredDuringSchedulingIgnoredDuringExecution:  # Soft rule
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: In
+            values:
+            - another-node-label-value
   tolerations:
     - key: "project"
       operator: "Equal"

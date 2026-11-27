@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-anti-affinity
+spec:
+  containers:
+   - name: nginx-c
+     image: nginx:stable-alpine3.24-perl
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution: # Hard rule
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: environment
+            operator: NotIn
+            values:
+            - prod   
+  preferredDuringSchedulingIgnoredDuringExecution:  # Soft rule
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: NotIn
+            values:
+            - another-node-label-value
+  tolerations:
+    - key: "project"
+      operator: "Equal"
+      value: "expense"
+      effect: "NoSchedule"
