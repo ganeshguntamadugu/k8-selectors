@@ -15,14 +15,14 @@ spec:
             operator: In
             values:
             - prod   
-  preferredDuringSchedulingIgnoredDuringExecution:  # Soft rule
-      - weight: 1
-        preference:
-          matchExpressions:
-          - key: another-node-label-key
-            operator: In
-            values:
-            - another-node-label-value
+      preferredDuringSchedulingIgnoredDuringExecution:  # Soft rule
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: another-node-label-key
+                operator: In
+                values:
+                - another-node-label-value
   tolerations:
     - key: "project"
       operator: "Equal"
