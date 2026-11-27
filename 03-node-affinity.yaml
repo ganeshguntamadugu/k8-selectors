@@ -14,7 +14,7 @@ spec:
           - key: environment
             operator: In
             values:
-            - prod   
+            - prod
       preferredDuringSchedulingIgnoredDuringExecution:  # Soft rule
           - weight: 1
             preference:
