@@ -15,3 +15,8 @@ spec:
             operator: In
             values:
             - prod   
+  tolerations:
+    - key: "project"
+      operator: "Equal"
+      value: "expense"
+      effect: "NoSchedule"
