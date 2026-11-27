@@ -69,12 +69,12 @@ spec:
                 values:
                 - backend
             topologyKey: topology.kubernetes.io/zone
-        # podAffinity:
-        #   requiredDuringSchedulingIgnoredDuringExecution:
-        #   - labelSelector:
-        #       matchExpressions:
-        #       - key: pupose
-        #         operator: In
-        #         values:
-        #         - cache
-        #     topologyKey: topology.kubernetes.io/zone
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: pupose
+                operator: In
+                values:
+                - cache
+            topologyKey: topology.kubernetes.io/zone
