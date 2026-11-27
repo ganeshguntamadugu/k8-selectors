@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cache-paa
+  labels:
+    pupose: pod-affinity
+spec:
+  containers:
+   - name: nginx-c
+     image: nginx:stable-alpine3.24-perl
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend-paa
+spec:
+  containers:
+   - name: nginx-c
+     image: nginx:stable-alpine3.24-perl
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: pupose
+            operator: In
+            values:
+            - pod-affinity
+        topologyKey: topology.kubernetes.io/zone

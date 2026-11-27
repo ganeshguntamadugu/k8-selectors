@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: cache
+  name: cache-pa
   labels:
     pupose: pod-affinity
 spec:
@@ -12,7 +12,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: backend
+  name: backend-pa
 spec:
   containers:
    - name: nginx-c
