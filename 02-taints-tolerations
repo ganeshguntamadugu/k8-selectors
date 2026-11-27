@@ -6,3 +6,8 @@ spec:
   containers:
    - name: nginx-c
      image: nginx:stable-alpine3.24-perl
+  tolerations:
+    - key: project
+      operator: equal
+      value: expense
+      effect: NoSchedule
